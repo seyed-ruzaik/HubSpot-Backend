@@ -1,6 +1,6 @@
 # HubSpot API Integration
 
-This repository contains a Python script to fetch and display sales emails and tickets from HubSpot using their API.
+This repository contains a Python script to fetch and display marketing emails and tickets from HubSpot using their API.
 
 ## Functionalities
 
