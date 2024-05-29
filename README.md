@@ -4,7 +4,7 @@ This repository contains a Python script to fetch and display sales emails and t
 
 ## Functionalities
 
-- **Fetch Emails**: Retrieve sales emails from HubSpot using the Engagements API.
+- **Fetch Emails**: Retrieve marketing emails from HubSpot using the HubSpot API.
 - **Fetch Tickets**: Retrieve tickets from HubSpot using the CRM API.
 - **Display Data**:
   - Print the fetched email and ticket data to the console in a readable format.
@@ -35,7 +35,7 @@ The script performs the following steps:
     - Uses a private app access token for authentication to the HubSpot API.
 
 2. **Fetch Data**:
-    - **Fetch Emails**: Uses the `fetch_emails` function to retrieve sales emails from the HubSpot Engagements API.
+    - **Fetch Emails**: Uses the `fetch_emails` function to retrieve marketing emails from the HubSpot API.
     - **Fetch Tickets**: Uses the `fetch_tickets` function to retrieve tickets from the HubSpot CRM API.
 
 3. **Display Data**:
@@ -46,7 +46,7 @@ The script performs the following steps:
 ### Script Breakdown
 
 - **fetch_emails**: 
-    - Makes a GET request to the HubSpot Engagements API to fetch sales emails.
+    - Makes a GET request to the HubSpot API to fetch marketing emails.
     - Handles errors and returns the email data.
 
 - **fetch_tickets**: 
@@ -58,6 +58,7 @@ The script performs the following steps:
     - Converts data to pandas DataFrames.
     - Saves data to CSV files.
     - Prints data as tables.
+    - Additionally a GUI using Tkinter to display the data.
 
 ## Author
 
