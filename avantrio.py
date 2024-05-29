@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 
 # Authentication
-access_token = "pat-na1-d09024eb-906f-41e6-a4c5-3a8ec86b4174"
+access_token = "MY_TOKEN"
 headers = {
     "Authorization": f"Bearer {access_token}",
     "Content-Type": "application/json"
