@@ -1,4 +1,5 @@
 import tkinter as tk
+from datetime import datetime
 from tkinter import ttk
 
 import pandas as pd
@@ -44,6 +45,27 @@ def fetch_tickets():
         # Print the error message if the request failed
         print(f"Error fetching tickets: {response.status_code} - {response.text}")
         return None
+
+
+def filter_emails_by_date(emails, start_date, end_date):
+    """
+    Filter the emails based on the given date range.
+    """
+    filtered_emails = []
+    start_date = datetime.strptime(start_date, '%Y-%m-%d')
+    end_date = datetime.strptime(end_date, '%Y-%m-%d')
+
+    for email in emails.get('objects', []):
+        created = email['created']
+        if isinstance(created, int):
+            email_created_date = datetime.utcfromtimestamp(created / 1000.0)
+        else:
+            email_created_date = datetime.strptime(created, '%Y-%m-%dT%H:%M:%S.%fZ')
+
+        if start_date <= email_created_date <= end_date:
+            filtered_emails.append(email)
+
+    return {'objects': filtered_emails}
 
 
 def display_data(emails, tickets):
@@ -150,5 +172,11 @@ if __name__ == "__main__":
     # Fetch emails and tickets
     emails = fetch_emails()
     tickets = fetch_tickets()
-    # Display fetched data
-    display_data(emails, tickets)
+
+    # Define date range for filtering
+    start_date = "2024-05-29"
+    end_date = "2024-06-02"
+    filtered_emails = filter_emails_by_date(emails, start_date, end_date)
+
+    # Display fetched and filtered data
+    display_data(filtered_emails, tickets)
